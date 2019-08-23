@@ -1,6 +1,10 @@
 package com.lambdaschool.bookstore.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "authors")
@@ -13,6 +17,12 @@ public class Author extends Auditable {
     private String firstName;
     @Column(nullable = false)
     private String lastName;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "bookAuthors",
+            joinColumns = @JoinColumn(name = "authorId"))
+    @JsonIgnoreProperties("authorId")
+    private List<Book> authoredBooks = new ArrayList<>();
 
     public Author() {
     }
