@@ -11,52 +11,56 @@ import java.util.List;
 public class Author extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long authorId;
+    private long authorid;
 
     @Column(nullable = false)
-    private String firstName;
+    private String firstname;
     @Column(nullable = false)
-    private String lastName;
+    private String lastname;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "bookAuthors",
-            joinColumns = @JoinColumn(name = "authorId"))
+            joinColumns = @JoinColumn(name = "authorid"))
     @JsonIgnoreProperties("authorId")
-    private List<Book> authoredBooks = new ArrayList<>();
+    private List<Book> authoredbooks = new ArrayList<>();
 
     public Author() {
     }
 
-    public Author(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Author(String firstname, String lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
-    public long getAuthorId() {
-        return authorId;
+    public long getAuthorid() {
+        return authorid;
     }
 
-    public void setAuthorId(long authorId) {
-        this.authorId = authorId;
+    public void setAuthortd(long authortd) {
+        this.authorid = authortd;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getFullName(){
-        return this.firstName + " " + this.lastName;
+    public List<Book> getAuthoredbooks() {
+        return authoredbooks;
+    }
+
+    public void setAuthoredbooks(List<Book> authoredbooks) {
+        this.authoredbooks = authoredbooks;
     }
 }

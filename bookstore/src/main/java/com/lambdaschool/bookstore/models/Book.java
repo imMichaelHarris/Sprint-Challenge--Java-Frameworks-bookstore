@@ -12,23 +12,23 @@ import java.util.List;
 public class Book extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long bookId;
+    private long booktd;
 
     @Column(nullable = false)
-    private String bookTitle;
+    private String booktitle;
 
     private String isbn;
     private int copy;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "bookAuthors",
-            joinColumns = @JoinColumn(name = "authorId"))
+            joinColumns = @JoinColumn(name = "authorid"))
     @JsonIgnoreProperties("bookId")
-    private List<Author> bookAuthors = new ArrayList<>();
+    private List<Author> bookauthors = new ArrayList<>();
 
 
     public Book(String bookTitle, String isbn, int copy) {
-        this.bookTitle = bookTitle;
+        this.booktitle = bookTitle;
         this.isbn = isbn;
         this.copy = copy;
     }
@@ -36,20 +36,20 @@ public class Book extends Auditable{
     public Book() {
     }
 
-    public long getBookId() {
-        return bookId;
+    public long getBooktd() {
+        return booktd;
     }
 
-    public void setBookId(long bookId) {
-        this.bookId = bookId;
+    public void setBooktd(long booktd) {
+        this.booktd = booktd;
     }
 
-    public String getBookTitle() {
-        return bookTitle;
+    public String getBooktitle() {
+        return booktitle;
     }
 
-    public void setBookTitle(String bookTitle) {
-        this.bookTitle = bookTitle;
+    public void setBooktitle(String booktitle) {
+        this.booktitle = booktitle;
     }
 
     public String getIsbn() {
@@ -66,5 +66,13 @@ public class Book extends Auditable{
 
     public void setCopy(int copy) {
         this.copy = copy;
+    }
+
+    public List<Author> getBookauthors() {
+        return bookauthors;
+    }
+
+    public void setBookauthors(List<Author> bookauthors) {
+        this.bookauthors = bookauthors;
     }
 }

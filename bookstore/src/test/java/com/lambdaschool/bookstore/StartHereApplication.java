@@ -16,7 +16,7 @@ public class StartHereApplication
 
     public static void main(String[] args)
     {
-        ApplicationContext ctx = SpringApplication.run(StartHereApplication.class, args);
+        ApplicationContext ctx = SpringApplication.run(BookStoreApplication.class, args);
 
         DispatcherServlet dispatcherServlet = (DispatcherServlet) ctx.getBean("dispatcherServlet");
         dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
