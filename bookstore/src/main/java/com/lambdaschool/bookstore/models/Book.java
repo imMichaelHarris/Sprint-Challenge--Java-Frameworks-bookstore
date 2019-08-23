@@ -18,7 +18,7 @@ public class Book extends Auditable{
     private String booktitle;
 
     private String isbn;
-    private int copy;
+    private Integer copy;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "bookAuthors",
@@ -60,7 +60,7 @@ public class Book extends Auditable{
         this.isbn = isbn;
     }
 
-    public int getCopy() {
+    public Integer getCopy() {
         return copy;
     }
 

@@ -9,4 +9,8 @@ import java.util.List;
 public interface BookRepository extends PagingAndSortingRepository<Book, Long> {
 
     List<GetBooks> findBooks();
+
+    Book findBookById(long id);
+
+    Book updateBook(long id, Book updatedBook);
 }

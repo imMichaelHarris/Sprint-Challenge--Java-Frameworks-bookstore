@@ -19,4 +19,25 @@ public class BookServiceImpl implements BookService {
         bookrepos.findAll().iterator().forEachRemaining(list::add);
         return list;
     }
+
+    @Override
+    public Book findById(long id) {
+        return bookrepos.findBookById(id);
+    }
+
+    @Override
+    public Book updateBook(long id, Book updatedBook) {
+        Book currentBook = bookrepos.findBookById(id);
+        if(updatedBook.getBooktitle() != null){
+            currentBook.setBooktitle(updatedBook.getBooktitle());
+        }
+        if(updatedBook.getIsbn() != null){
+            currentBook.setIsbn(updatedBook.getIsbn());
+        }
+        if(updatedBook.getCopy() != null ){
+            currentBook.setCopy(updatedBook.getCopy());
+        }
+
+        return bookrepos.updateBook(id, currentBook);
+    }
 }
