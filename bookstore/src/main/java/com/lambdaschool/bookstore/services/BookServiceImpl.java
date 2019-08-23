@@ -1,6 +1,7 @@
 package com.lambdaschool.bookstore.services;
 
 import com.lambdaschool.bookstore.exceptions.ResourceNotFoundException;
+import com.lambdaschool.bookstore.models.Author;
 import com.lambdaschool.bookstore.models.Book;
 import com.lambdaschool.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,16 @@ public class BookServiceImpl implements BookService {
 
 
     @Override
-    public Book save(Book newBook) {
-        return null;
+    public Book save(Book book) {
+        Book newBook = new Book();
+
+        newBook.setBooktitle(book.getBooktitle());
+        newBook.setIsbn(book.getIsbn());
+        newBook.setCopy(book.getCopy());
+        for(Author a : book.getBookauthors()){
+            newBook.getBookauthors().add(new Author(a.getLname(), a.getFname()));
+        }
+        return bookrepos.save(newBook);
     }
 
     @Override
