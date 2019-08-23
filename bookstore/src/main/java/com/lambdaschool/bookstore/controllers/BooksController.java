@@ -2,10 +2,9 @@ package com.lambdaschool.bookstore.controllers;
 
 import com.lambdaschool.bookstore.exceptions.ResourceNotFoundException;
 import com.lambdaschool.bookstore.models.Book;
+import com.lambdaschool.bookstore.models.ErrorDetail;
 import com.lambdaschool.bookstore.services.BookService;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +31,10 @@ public class BooksController {
             @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query", value = "Results page you want to retrieve(0..N)"),
             @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query", value = "Number pf records per page"),
             @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query", value="Sorting criteria in the format: property(asc|desc). Default sort order is ascending. Multiple sort criteria are supported")
+    })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Books successfully retrieved", response = Book.class),
+            @ApiResponse(code = 404, message = "Could not retrieve books", response = ErrorDetail.class)
     })
     @GetMapping(value = "", produces = {"application/json"})
     public ResponseEntity<?> listAllBooks(@PageableDefault(page = 0, size = 3) Pageable pageable) throws ResourceNotFoundException {

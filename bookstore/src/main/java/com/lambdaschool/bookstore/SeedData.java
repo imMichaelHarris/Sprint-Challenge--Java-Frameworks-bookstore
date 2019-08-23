@@ -1,6 +1,5 @@
 package com.lambdaschool.bookstore;
 
-import com.lambdaschool.bookstore.models.Quote;
 import com.lambdaschool.bookstore.models.Role;
 import com.lambdaschool.bookstore.models.User;
 import com.lambdaschool.bookstore.models.UserRoles;
