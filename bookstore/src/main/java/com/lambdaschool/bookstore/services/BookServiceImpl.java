@@ -4,6 +4,7 @@ import com.lambdaschool.bookstore.exceptions.ResourceNotFoundException;
 import com.lambdaschool.bookstore.models.Book;
 import com.lambdaschool.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class BookServiceImpl implements BookService {
     private BookRepository bookrepos;
 
     @Override
-    public List<Book> findBooks() throws ResourceNotFoundException {
+    public List<Book> findBooks(Pageable pageable) throws ResourceNotFoundException {
         List<Book> list = new ArrayList<>();
         bookrepos.findAll().iterator().forEachRemaining(list::add);
         return list;
