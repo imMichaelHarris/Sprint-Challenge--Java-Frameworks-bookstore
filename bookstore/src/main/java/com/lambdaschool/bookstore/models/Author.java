@@ -20,9 +20,9 @@ public class Author extends Auditable {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "bookAuthors",
-            joinColumns = @JoinColumn(name = "authorid"))
+            joinColumns = @JoinColumn(name = "bookid"))
     @JsonIgnoreProperties("author")
-    private List<Book> authoredbooks = new ArrayList<>();
+    private List<Book> bookauthors = new ArrayList<>();
 
     public Author() {
     }
@@ -56,11 +56,11 @@ public class Author extends Auditable {
         this.lname = lname;
     }
 
-    public List<Book> getAuthoredbooks() {
-        return authoredbooks;
+    public List<Book> getBookauthors() {
+        return bookauthors;
     }
 
-    public void setAuthoredbooks(List<Book> authoredbooks) {
-        this.authoredbooks = authoredbooks;
+    public void setBookauthors(List<Book> bookauthors) {
+        this.bookauthors = bookauthors;
     }
 }

@@ -29,7 +29,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book updateBook(long id, Book updatedBook) throws ResourceNotFoundException{
+    public Book update(long id, Book updatedBook) throws ResourceNotFoundException{
 //        return  null;
         Book currentBook = bookrepos.findBookById(id);
         if(updatedBook.getBooktitle() != null){
@@ -42,7 +42,18 @@ public class BookServiceImpl implements BookService {
             currentBook.setCopy(updatedBook.getCopy());
         }
 
-        return bookrepos.updateBook(id, currentBook);
+        return bookrepos.save(currentBook);
+    }
+
+
+    @Override
+    public Book save(Book newBook) {
+        return null;
+    }
+
+    @Override
+    public Book assign(long bookid, long authorid) {
+        return null;
     }
 
     @Override

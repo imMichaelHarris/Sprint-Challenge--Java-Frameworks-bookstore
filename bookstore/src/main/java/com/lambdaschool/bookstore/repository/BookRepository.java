@@ -14,9 +14,8 @@ public interface BookRepository extends PagingAndSortingRepository<Book, Long> {
 //
     @Query(value = "SELECT * FROM book WHERE bookid = :id", nativeQuery = true)
     Book findBookById(long id);
-//
 
-    Book updateBook(long id, Book updatedBook);
+
     @Query(value = "DELETE FROM book WHERE bookid = 3", nativeQuery = true)
     void delete(long id);
 }
