@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,10 +19,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @PreAuthorize("hasRole('data') or hasRole('admin')")
 @RequestMapping(value = "/data")
 public class DataController {
+    private static final Logger logger = LoggerFactory.getLogger(DataController.class);
+
     @Autowired
     private BookService bookService;
 
@@ -32,7 +38,8 @@ public class DataController {
     @DeleteMapping(value = "/books{id}")
     public ResponseEntity deleteBook(
             @ApiParam(value = "Book Id", required = true, example = "1")
-            @PathVariable long id) throws TypeMismatchException {
+            @PathVariable long id, HttpServletRequest request) throws TypeMismatchException {
+        logger.info( request.getMethod().toUpperCase() + " "+ request.getRequestURL() + " accessed at info level");
         bookService.delete(id);
         return new ResponseEntity(null, HttpStatus.OK);
     }

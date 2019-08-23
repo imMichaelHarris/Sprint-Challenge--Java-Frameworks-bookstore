@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/books")
 public class BooksController {
-    private static final Logger logger = LoggerFactory.getLogger(RolesController.class);
+    private static final Logger logger = LoggerFactory.getLogger(BooksController.class);
 
     @Autowired
     private BookService bookSerivce;
@@ -37,7 +38,8 @@ public class BooksController {
             @ApiResponse(code = 404, message = "Could not retrieve books", response = ErrorDetail.class)
     })
     @GetMapping(value = "", produces = {"application/json"})
-    public ResponseEntity<?> listAllBooks(@PageableDefault(page = 0, size = 3) Pageable pageable) throws ResourceNotFoundException {
+    public ResponseEntity<?> listAllBooks(@PageableDefault(page = 0, size = 3) Pageable pageable, HttpServletRequest request) throws ResourceNotFoundException {
+        logger.info( request.getMethod().toUpperCase() + " "+ request.getRequestURL() + " accessed at info level");
         List<Book> list = bookSerivce.findBooks(pageable);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
