@@ -15,4 +15,8 @@ INSERT INTO book (bookid, title, ISBN, copy) VALUES (5, 'Calling Texas Home', '1
 -- INSERT INTO wrote (bookid, authorid) VALUES (4, 5);
 -- INSERT INTO wrote (bookid, authorid) VALUES (4, 3);
 -- INSERT INTO wrote (bookid, authorid) VALUES (5, 4);
+
+INSERT INTO users (userid, username, password) VALUES (1, 'TestUser', 'password');
+INSERT INTO users (userid, username, password) VALUES (2, 'TestAdmin', 'password');
+INSERT INTO users (userid, username, password) VALUES (3, 'TestData', 'password');
 alter sequence hibernate_sequence restart with 25;

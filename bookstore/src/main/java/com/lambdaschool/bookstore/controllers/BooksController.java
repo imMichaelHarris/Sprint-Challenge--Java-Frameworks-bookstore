@@ -1,5 +1,6 @@
 package com.lambdaschool.bookstore.controllers;
 
+import com.lambdaschool.bookstore.exceptions.ResourceNotFoundException;
 import com.lambdaschool.bookstore.models.Book;
 import com.lambdaschool.bookstore.services.BookService;
 import org.slf4j.Logger;
@@ -21,9 +22,9 @@ public class BooksController {
     @Autowired
     private BookService bookSerivce;
 
-//    @GetMapping(value = "", produces = {"application/json"})
-//    public ResponseEntity<?> listAllBooks(){
-//        List<Book> list = bookSerivce.findBooks();
-//        return new ResponseEntity<>(list, HttpStatus.OK);
-//    }
+    @GetMapping(value = "", produces = {"application/json"})
+    public ResponseEntity<?> listAllBooks() throws ResourceNotFoundException {
+        List<Book> list = bookSerivce.findBooks();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
 }

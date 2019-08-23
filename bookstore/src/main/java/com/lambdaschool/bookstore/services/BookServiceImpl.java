@@ -1,5 +1,6 @@
 package com.lambdaschool.bookstore.services;
 
+import com.lambdaschool.bookstore.exceptions.ResourceNotFoundException;
 import com.lambdaschool.bookstore.models.Book;
 import com.lambdaschool.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +15,20 @@ public class BookServiceImpl implements BookService {
     private BookRepository bookrepos;
 
     @Override
-    public List<Book> findBooks() {
+    public List<Book> findBooks() throws ResourceNotFoundException {
         List<Book> list = new ArrayList<>();
         bookrepos.findAll().iterator().forEachRemaining(list::add);
         return list;
     }
 
     @Override
-    public Book findById(long id) {
+    public Book findById(long id) throws ResourceNotFoundException{
 //        return null;
         return bookrepos.findBookById(id);
     }
 
     @Override
-    public Book updateBook(long id, Book updatedBook) {
+    public Book updateBook(long id, Book updatedBook) throws ResourceNotFoundException{
         return  null;
 //        Book currentBook = bookrepos.findBookById(id);
 //        if(updatedBook.getBooktitle() != null){
