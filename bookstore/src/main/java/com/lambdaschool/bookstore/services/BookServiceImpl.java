@@ -30,19 +30,19 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book updateBook(long id, Book updatedBook) throws ResourceNotFoundException{
-        return  null;
-//        Book currentBook = bookrepos.findBookById(id);
-//        if(updatedBook.getBooktitle() != null){
-//            currentBook.setBooktitle(updatedBook.getBooktitle());
-//        }
-//        if(updatedBook.getIsbn() != null){
-//            currentBook.setIsbn(updatedBook.getIsbn());
-//        }
-//        if(updatedBook.getCopy() != null ){
-//            currentBook.setCopy(updatedBook.getCopy());
-//        }
-//
-//        return bookrepos.updateBook(id, currentBook);
+//        return  null;
+        Book currentBook = bookrepos.findBookById(id);
+        if(updatedBook.getBooktitle() != null){
+            currentBook.setBooktitle(updatedBook.getBooktitle());
+        }
+        if(updatedBook.getIsbn() != null){
+            currentBook.setIsbn(updatedBook.getIsbn());
+        }
+        if(updatedBook.getCopy() != null ){
+            currentBook.setCopy(updatedBook.getCopy());
+        }
+
+        return bookrepos.updateBook(id, currentBook);
     }
 
     @Override

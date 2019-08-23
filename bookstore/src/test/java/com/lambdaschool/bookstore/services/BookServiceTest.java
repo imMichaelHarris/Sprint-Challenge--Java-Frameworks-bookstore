@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,10 +31,12 @@ class BookServiceTest {
 
     @Test
     void findBooks() {
+        assertEquals(5, bookService.findBooks(Pageable.unpaged()).size());
     }
 
     @Test
     void findById() {
+        assertEquals("Calling Texas Home", bookService.findById(5).getBooktitle());
     }
 
     @Test
@@ -42,5 +45,7 @@ class BookServiceTest {
 
     @Test
     void delete() {
+        bookService.delete(5);
+        assertEquals(4, bookService.findBooks(Pageable.unpaged()).size());
     }
 }

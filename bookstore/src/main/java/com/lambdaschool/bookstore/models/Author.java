@@ -21,7 +21,7 @@ public class Author extends Auditable {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "bookAuthors",
             joinColumns = @JoinColumn(name = "authorid"))
-    @JsonIgnoreProperties("authorId")
+    @JsonIgnoreProperties("author")
     private List<Book> authoredbooks = new ArrayList<>();
 
     public Author() {
