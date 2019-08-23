@@ -14,7 +14,7 @@ public class BookServiceImpl implements BookService {
     private BookRepository bookrepos;
 
     @Override
-    public List<Book> findAll() {
+    public List<Book> findBooks() {
         List<Book> list = new ArrayList<>();
         bookrepos.findAll().iterator().forEachRemaining(list::add);
         return list;
