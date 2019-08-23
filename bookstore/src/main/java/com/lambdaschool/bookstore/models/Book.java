@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name =  "books")
+@Table(name =  "book")
 public class Book extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long booktd;
+    private long bookid;
 
     @Column(nullable = false)
-    private String booktitle;
+    private String title;
 
     private String isbn;
     private Integer copy;
@@ -28,7 +28,7 @@ public class Book extends Auditable{
 
 
     public Book(String bookTitle, String isbn, int copy) {
-        this.booktitle = bookTitle;
+        this.title = bookTitle;
         this.isbn = isbn;
         this.copy = copy;
     }
@@ -37,19 +37,19 @@ public class Book extends Auditable{
     }
 
     public long getBooktd() {
-        return booktd;
+        return bookid;
     }
 
     public void setBooktd(long booktd) {
-        this.booktd = booktd;
+        this.bookid = booktd;
     }
 
     public String getBooktitle() {
-        return booktitle;
+        return title;
     }
 
     public void setBooktitle(String booktitle) {
-        this.booktitle = booktitle;
+        this.title = booktitle;
     }
 
     public String getIsbn() {

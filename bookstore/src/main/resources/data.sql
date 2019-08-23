@@ -1,55 +1,18 @@
-DELETE
-FROM books;
---
--- DELETE
--- FROM course;
---
--- DELETE
--- FROM student;
---
--- DELETE
--- FROM instructor;
--- CREATE TABLE books (
---     bookid int,
---     bookTitle VARCHAR(100)	,
---     isbn VARCHAR(100),
---     copy int
--- );
-
-INSERT INTO books(bookid, booktitle, isbn, copy)
-    VALUES(1, 'Sally jumps the shark', '20-3333-5321-4', 1986),
-          (2,'Lucy hears a who', '23-0192-3443-1', 1999),
-          (3, 'Charlie and the Chocolate Factory', '21-8273-0192-2', 1965)
-
--- INSERT INTO course (courseid, coursename, instructid)
--- 	VALUES (1, 'Data Science', 1),
---            (2, 'JavaScript', 1),
---            (3, 'Node.js',  1),
---            (4, 'Java Back End', 2),
---            (5, 'Mobile IOS', 2),
---            (6, 'Mobile Android',  3);
---
--- INSERT INTO student (studid, studname)
---     VALUES (1, 'John'),
---            (2, 'Julian'),
---            (3, 'Mary'),
---            (4, 'Julian'),
---            (5, 'Tyler'),
---            (6, 'Kim'),
---            (7, 'Juan'),
---            (8, 'Robby'),
---            (9, 'Roberto'),
---            (10, 'Bob'),
---            (11, 'Liz'),
---            (12, 'June'),
---            (13, 'April');
---
--- INSERT INTO studcourses (studid, courseid)
---     VALUES (1, 1),
---            (1, 4),
---            (2, 2),
---            (3, 3),
---            (3, 1),
---            (3, 6);
-
-alter sequence hibernate_sequence restart with 20;
+INSERT INTO author (authorid, fname, lname) VALUES (1, 'John', 'Mitchell');
+INSERT INTO author (authorid, fname, lname) VALUES (2, 'Dan', 'Brown');
+INSERT INTO author (authorid, fname, lname) VALUES (3, 'Jerry', 'Poe');
+INSERT INTO author (authorid, fname, lname) VALUES (4, 'Wells', 'Teague');
+INSERT INTO author (authorid, fname, lname) VALUES (5, 'George', 'Gallinger');
+INSERT INTO author (authorid, fname, lname) VALUES (6, 'Ian', 'Stewart');
+INSERT INTO book (bookid, title, ISBN, copy) VALUES (1, 'Flatterland', '9780738206752', 2001);
+INSERT INTO book (bookid, title, ISBN, copy) VALUES (2, 'Digital Fortess', '9788489367012', 2007);
+INSERT INTO book (bookid, title, ISBN, copy) VALUES (3, 'The Da Vinci Code', '9780307474278', 2009);
+INSERT INTO book (bookid, title, ISBN, copy) VALUES (4, 'Essentials of Finance', '1314241651234', NULL);
+INSERT INTO book (bookid, title, ISBN, copy) VALUES (5, 'Calling Texas Home', '1885171382134', 2000);
+-- INSERT INTO wrote (bookid, authorid) VALUES (1, 6);
+-- INSERT INTO wrote (bookid, authorid) VALUES (2, 2);
+-- INSERT INTO wrote (bookid, authorid) VALUES (3, 2);
+-- INSERT INTO wrote (bookid, authorid) VALUES (4, 5);
+-- INSERT INTO wrote (bookid, authorid) VALUES (4, 3);
+-- INSERT INTO wrote (bookid, authorid) VALUES (5, 4);
+alter sequence hibernate_sequence restart with 25;

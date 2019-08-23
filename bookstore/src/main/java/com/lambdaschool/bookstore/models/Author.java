@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "authors")
+@Table(name = "author")
 public class Author extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long authorid;
 
     @Column(nullable = false)
-    private String firstname;
+    private String fname;
     @Column(nullable = false)
-    private String lastname;
+    private String lname;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "bookAuthors",
@@ -27,33 +27,33 @@ public class Author extends Auditable {
     public Author() {
     }
 
-    public Author(String firstname, String lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public Author(String fname, String lname) {
+        this.fname = fname;
+        this.lname = lname;
     }
 
     public long getAuthorid() {
         return authorid;
     }
 
-    public void setAuthortd(long authortd) {
-        this.authorid = authortd;
+    public void setAuthorid(long authorid) {
+        this.authorid = authorid;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFname() {
+        return fname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLname() {
+        return lname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public List<Book> getAuthoredbooks() {

@@ -21,9 +21,9 @@ public class BooksController {
     @Autowired
     private BookService bookSerivce;
 
-    @GetMapping(value = "", produces = {"application/json"})
-    public ResponseEntity<?> listAllBooks(){
-        List<Book> list = bookSerivce.findBooks();
-        return new ResponseEntity<>(list, HttpStatus.OK);
-    }
+//    @GetMapping(value = "", produces = {"application/json"})
+//    public ResponseEntity<?> listAllBooks(){
+//        List<Book> list = bookSerivce.findBooks();
+//        return new ResponseEntity<>(list, HttpStatus.OK);
+//    }
 }
